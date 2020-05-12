@@ -27,6 +27,7 @@ gem 'pry'
 gem 'jquery-rails'
 # User authentication
 gem 'devise'
+gem 'rb-readline'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

@@ -1,0 +1,4 @@
+<%= form_with model: @election do |form| %>
+  <%= form.text_field :name, placeholder: 'name' %>
+  <%= form.submit "Save", class: "btn waves-effect waves-light" %>
+<% end %>

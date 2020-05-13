@@ -2,13 +2,16 @@
   <div class="col sm12">
     <div class="alert alert-primary">
       <% if @elections.present? %>
-        <nav class="nav flex-column">
+        <ul>
           <% @elections.each do |election| %>
-            <%= link_to election.name, election_path(election), class: "nav-link election-nav-link" %>
+            <li>
+              <%= link_to election.name, election_path(election), class: "nav-link election-nav-link" %>
+            </li>  
           <% end %>
-        </nav>
+        <ul>
       <% else %>
         There are no elections
       <% end %>
     </div>
   </div>
+</div>

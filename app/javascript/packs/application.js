@@ -9,4 +9,3 @@ $(function () {
     $('#vote_message').val('');
   });
 });
-

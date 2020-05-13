@@ -1,11 +1,31 @@
-<% @votes.each do |votes| %>
-  <p><%= votes.nominee_id %></p>
-<% end %>
+<div class="election" data-channel-subscribe="election" data-election-id="<%= @election.id %>">
+  <div class="inner">
+    <% @votes.each do |votes| %>
+      <p class="username"><%= User.find_by(id: votes.nominee_id)&.username %></p>
+    <% end %>
+  </div>
+</div>
 
 <%= form_with model: @vote, class: 'foobar' do |f| %>
-  <%= f.text_area :election_id, as: :hidden %>
-  <%= f.select :nominee_id, User.all.collect {|u| [ u.email, u.id ] } %>
+  <%= f.text_area :election_id, as: :hidden, class: 'hide' %>
+  <%= f.select :nominee_id, User.all.collect {|u| [ u.username, u.id ] } %>
   <%= f.text_area :message, size: "60x12" %>
-  <%= f.submit "Create" %>
+  <%= f.submit "Create", class: "btn" %>
 <% end %>
 
+<div class="d-none" data-role="message-template">
+  <div class="chat-message-container">
+    <div class="row no-gutters">
+
+      <div class="col">
+        <div class="message-content">
+          <p class="mb-1" data-role="message-text"></p>
+
+          <div class="text-right">
+            <small data-role="message-date"></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

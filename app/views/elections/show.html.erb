@@ -1,8 +1,8 @@
 <% @votes.each do |votes| %>
-  <%= votes %>
+  <p><%= votes.nominee_id %></p>
 <% end %>
 
-<%= form_with model: @vote do |f| %>
+<%= form_with model: @vote, class: 'foobar' do |f| %>
   <%= f.text_area :election_id, as: :hidden %>
   <%= f.select :nominee_id, User.all.collect {|u| [ u.email, u.id ] } %>
   <%= f.text_area :message, size: "60x12" %>

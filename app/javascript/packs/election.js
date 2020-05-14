@@ -1,4 +1,3 @@
-console.log('wtf')
 $(document).on("turbolinks:load", function () {
   $("#vote_form").on("ajax:success", function () {
     $("#vote_message").val("");

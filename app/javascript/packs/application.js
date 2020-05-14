@@ -5,4 +5,5 @@ require('channels')
 require('jquery')
 require("chartkick");
 require("chart.js");
-require("custom/election");
+require("packs/election");
+

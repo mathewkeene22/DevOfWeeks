@@ -4,4 +4,8 @@ class Election < ApplicationRecord
   def format_votes
     votes.joins(:nominee).group("users.username").count
   end
+
+  def allow_vote(current_user)
+    votes.map(&:created_by).include? current_user.id
+  end
 end

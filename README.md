@@ -3,10 +3,10 @@ Each and every week, members of the [Evanta](https://www.evanta.com) Dev Team ca
 
 ## Running the project locally 
 ### Redis
-Install redis if you don't already have it on your machine
+Install Redis if you don't already have it on your machine
 ```
 brew update
-brew install redis
+brew install Redis
 ```
 
 Fire it up

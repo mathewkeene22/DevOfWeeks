@@ -1,14 +1,16 @@
-$(function () {
+console.log('wtf')
+$(document).on("turbolinks:load", function () {
   $("#vote_form").on("ajax:success", function () {
     $("#vote_message").val("");
-    let electionId = $(".election").data("election-id");
-    let url = `/elections/${electionId}?refresh_chart=true`;
+    var electionId = $(".election").data("election-id");
+    var url = `/elections/${electionId}?refresh_chart=true`;
     $.ajax({
       url: url,
       type: "get",
       data: "",
       success: function (data) {
-        console.log("something went right!");
+        $(".chart-container").html(data);
+        $("input.btn").attr("disabled", true);
       },
       error: function (data) {
         console.log("something went wrong");

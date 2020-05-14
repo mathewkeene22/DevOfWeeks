@@ -12,12 +12,14 @@ $(function () {
       },
       {
         received: function (data) {
+          console.log('connected');
           let url = `/elections/${electionId}?refresh_chart=true`
           $.ajax({
             url: url,
             type: "get",
             data: "",
             success: function(data) {
+              debugger;
               $(element).find(".chart-container").html(data)
             },
             error: function(data) {

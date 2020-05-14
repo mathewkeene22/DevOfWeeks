@@ -1,8 +1,8 @@
 $(function () {
   $("#vote_form").on("ajax:success", function () {
     $("#vote_message").val("");
-
-    let url = `/elections/13?refresh_chart=true`;
+    let electionId = $(".election").data("election-id");
+    let url = `/elections/${electionId}?refresh_chart=true`;
     $.ajax({
       url: url,
       type: "get",

@@ -2,7 +2,6 @@ class VotesController < ApplicationController
   before_action :object_setter
 
   def create
-    # byebug
     @vote = Vote.create(
       user: current_user,
       election: @election,

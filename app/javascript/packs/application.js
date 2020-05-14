@@ -5,9 +5,4 @@ require('channels')
 require('jquery')
 require("chartkick");
 require("chart.js");
-
-$(function () {
-  $("#vote_form").on("ajax:success", function () {
-    $("#vote_message").val("");
-  });
-});
+require("custom/election");

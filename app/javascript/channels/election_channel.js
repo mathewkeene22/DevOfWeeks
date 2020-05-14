@@ -19,7 +19,6 @@ $(function () {
             type: "get",
             data: "",
             success: function(data) {
-              debugger;
               $(element).find(".chart-container").html(data)
             },
             error: function(data) {

@@ -5,7 +5,7 @@
     </div>
     <%= form_with model: @vote, id: 'vote_form' do |f| %>
       <%= f.text_area :election_id, as: :hidden, class: 'hide' %>
-      <%= f.select :nominee_id, User.all.collect {|u| [ u.username, u.id ] } %>
+      <%= f.select :nominee_id, User.where.not(id: current_user.id).collect {|u| [ u.username, u.id ] } %>
       <%= f.text_area :message, size: "60x12" %>
       <%= f.submit "Create", class: "btn" %>
     <% end %>

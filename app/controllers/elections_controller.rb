@@ -8,6 +8,9 @@ class ElectionsController < ApplicationController
   def show
     @vote = Vote.new election: @election
     @votes = @election.votes.includes(:user)
+    if params[:refresh_chart]
+      render partial: "elections/chart"
+    end
   end
 
   def new

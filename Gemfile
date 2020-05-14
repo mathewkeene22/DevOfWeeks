@@ -27,6 +27,7 @@ gem 'jquery-rails'
 # User authentication
 gem 'devise'
 gem 'rb-readline'
+gem "chartkick"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

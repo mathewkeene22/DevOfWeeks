@@ -7,7 +7,7 @@ require("chartkick");
 require("chart.js");
 
 $(function () {
-  $('.foobar').on('ajax:success', function() {
-    $('#vote_message').val('');
+  $("#vote_form").on("ajax:success", function () {
+    $("#vote_message").val("");
   });
 });

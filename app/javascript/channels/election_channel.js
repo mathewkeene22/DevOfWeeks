@@ -4,7 +4,6 @@ require("jquery");
 $(function () {
   $('[data-channel-subscribe="election"]').each(function (index, element) {
     let electionId = $(element).data("election-id");
-    let templateInner = $(".inner");
 
     consumer.subscriptions.create(
       {
@@ -13,10 +12,18 @@ $(function () {
       },
       {
         received: function (data) {
-          let content = templateInner.children().clone(true, true);
-          content.find('.username').val(data.user_id);
-          $(element).append(content);
-          console.log(data);
+          let url = `/elections/${electionId}?refresh_chart=true`
+          $.ajax({
+            url: url,
+            type: "get",
+            data: "",
+            success: function(data) {
+              $(element).find(".chart-container").html(data)
+            },
+            error: function(data) {
+              console.log('something went wrong')
+            }
+          });
         },
       }
     );

@@ -26,10 +26,13 @@ You should receive a `PONG`
 ### Installing dependancies 
 This project uses Ruby 2.5.1
 Use [RVM](https://rvm.io/) to easily manage Ruby versions
+
 Rails 6.0.0
 
 `bundle`
 
+
+### Start the server
 `rails s`
 
 

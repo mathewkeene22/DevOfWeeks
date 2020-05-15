@@ -1,0 +1,30 @@
+FROM ruby:2.5.5-alpine3.10
+ENV BUILD_DEPS="curl tar wget linux-headers imagemagick fontconfig bash libstdc++ libx11 libxrender libxext libssl1.1 ca-certificates fontconfig freetype ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family" \
+    DEV_DEPS="build-base postgresql-dev zlib-dev libxml2-dev yarn libxslt-dev readline-dev tzdata git nodejs less"
+
+RUN apk add --update --upgrade $BUILD_DEPS $DEV_DEPS
+# Set an environment variable where the Rails app is installed to inside of Docker image
+ENV RAILS_ROOT /var/www/app
+RUN mkdir -p $RAILS_ROOT
+# Set working directory
+WORKDIR $RAILS_ROOT
+
+# Env var so application knows it's running in docker
+ENV DOCKER=true
+
+# Adding gems
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN bundle install --jobs 20 --retry 5 --without test
+COPY yarn.lock yarn.lock
+RUN yarn install --check-files
+
+# open port 3000
+EXPOSE 3000
+
+# this is for EKS so it has the codebase
+COPY . .
+
+# run foreman (see Procfile)
+CMD ["foreman", "start"]
+

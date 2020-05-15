@@ -2,16 +2,25 @@
   <div class="col sm12">
     <div class="alert alert-primary">
       <% if @elections.present? %>
+        <h4>Most Recent</h4>
+        <%= link_to @elections.last.name, election_path(@elections.last), class: "nav-link election-nav-link" %>
+        
+        <% if @elections.size > 1 %>
+          <h4>Past Elections</h4>
+        <% end %>
+        
         <ul>
-          <% @elections.each do |election| %>
+          <% @elections[0..-2].each do |election| %>
             <li>
               <%= link_to election.name, election_path(election), class: "nav-link election-nav-link" %>
             </li>  
           <% end %>
         <ul>
+
       <% else %>
-        There are no elections
+        <h4>There are no elections</h4>
       <% end %>
+      
     </div>
   </div>
 </div>

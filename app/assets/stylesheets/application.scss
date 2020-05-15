@@ -1,26 +1,22 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
- @import "materialize";
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+@import "materialize";
 
- body {
-   background-color: #dec47a;;
- }
-
-.election {
-    margin: 30px auto;
+body {
+  background-color: #dec47a;;
 }
 
 nav {
@@ -36,6 +32,16 @@ nav {
   }
 }
 
+.election {
+  margin: 30px auto;
+}
+
+label, 
+#vote_nominee_id,
+input::placeholder  { 
+  color: #9b2cfb;
+}
+
 #vote_form {
   float: left;
   margin: 20px;
@@ -45,14 +51,29 @@ nav {
   #vote_message {
     margin: 20px auto;
     background: white;
-    color: #9b2dfb;
+    color: #9b2cfb;;
   }
 }
 
 .btn {
   background-color: #9b2cfb;
-  &:hover {
+  &:hover, &:focus {
     background-color: #9b2cfb;
+    color: #30ffcf;
+  }
+}
+
+h4 {
+  color: #30ffcf;
+  text-shadow: #9B2CFD 2px 2px 5px;
+  &.chart-header {
+    text-align: center;
+  }
+}
+
+a {
+  color: #9b2cfb;
+  &:hover {
     color: #30ffcf;
   }
 }
@@ -72,11 +93,4 @@ input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid #9b2cfb;
   box-shadow: 0 1px 0 0 #9b2cfb;
-}
-
-a {
-  color: #9b2cfb;
-  &:hover {
-    color: #30ffcf;
-  }
 }

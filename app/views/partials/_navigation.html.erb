@@ -1,17 +1,20 @@
-<nav>
-  <div class="nav-wrapper">
-    <a href="/" class="logo">
-      <img src="<%= asset_path( 'logo.png' ) %>"/>
-    </a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <% if current_user %>
-        <li>
-          <%= link_to new_election_path, class: "btn btn-primary" do %>
-            Create an Election
-          <% end %>
-        </li>
-        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="logo">
+        <img src="<%= asset_path( 'logo.png' ) %>"/>
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if current_user %>
+          <li>
+            <%= link_to new_election_path, class: "btn btn-primary" do %>
+              Create an Election
+            <% end %>
+          </li>
+          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</div>
+    

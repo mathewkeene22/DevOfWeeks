@@ -1,1 +1,5 @@
-<%= pie_chart @election.format_votes %>
+<% if @election.votes.present? %>
+  <%= pie_chart @election.format_votes %>
+<% else %>
+  <h4 class="chart-header">No one has voted yet</h4>
+<% end %>

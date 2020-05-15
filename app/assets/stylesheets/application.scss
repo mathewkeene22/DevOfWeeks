@@ -31,16 +31,14 @@ nav {
     }
   }
 }
-  
-input::placeholder {
-  color: #9b2cfb;
-}
 
 .election {
   margin: 30px auto;
 }
 
-label { 
+label, 
+#vote_nominee_id,
+input::placeholder  { 
   color: #9b2cfb;
 }
 

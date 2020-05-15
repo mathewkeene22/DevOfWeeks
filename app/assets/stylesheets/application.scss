@@ -59,7 +59,7 @@ label {
 
 .btn {
   background-color: #9b2cfb;
-  &:hover {
+  &:hover, &:focus {
     background-color: #9b2cfb;
     color: #30ffcf;
   }
@@ -68,6 +68,9 @@ label {
 h4 {
   color: #30ffcf;
   text-shadow: #9B2CFD 2px 2px 5px;
+  &.chart-header {
+    text-align: center;
+  }
 }
 
 a {

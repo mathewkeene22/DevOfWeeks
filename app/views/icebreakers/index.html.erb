@@ -1,0 +1,10 @@
+<div class="icebreaker">
+  <div class="container">
+  <% if @icebreaker.present? %>
+    <%= @icebreaker.question %>
+  <% else %>
+    <p>You've broken all the ice there is! Maybe reset the questions in database. Or add some new ones.</p>
+  <% end %>
+  </div>
+
+</div>

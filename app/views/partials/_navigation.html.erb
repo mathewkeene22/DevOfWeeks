@@ -11,10 +11,14 @@
               Create an Election
             <% end %>
           </li>
+          <li>
+            <%= link_to icebreakers_path, class: "btn btn-primary" do %>
+              Get an Icebreaker
+            <% end %>
+          </li>
           <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
         <% end %>
       </ul>
     </div>
   </nav>
 </div>
-    

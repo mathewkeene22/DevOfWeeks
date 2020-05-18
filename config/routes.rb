@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   resources :votes
   resources :elections
+  resources :icebreakers, only: :index
 end

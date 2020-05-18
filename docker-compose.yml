@@ -20,6 +20,19 @@ services:
       - .:/var/www/app
     ports:
       - 3001:3000
+  webpacker:
+    build:
+      context: .
+      dockerfile: ./docker/DockerFile
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/var/www/app
+    ports:
+      - '3035:3035'
   db:
     image: postgres:11.5
     volumes:

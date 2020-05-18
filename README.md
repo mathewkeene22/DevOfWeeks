@@ -6,6 +6,8 @@ Each and every week, members of the [Evanta](https://www.evanta.com) Dev Team ca
 
 `docker-compose build`
 
+`docker-compose run webpacker yarn`
+
 `docker-compose run dow_app rake db:create`
 
 `docker-compose up`

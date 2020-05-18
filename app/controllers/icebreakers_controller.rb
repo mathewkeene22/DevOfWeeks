@@ -6,4 +6,9 @@ class IcebreakersController < ApplicationController
     end
     render :index
   end
+
+  def update_all_questions
+    Icebreaker.update_all(is_asked: false)
+    redirect_to "/"
+  end
 end

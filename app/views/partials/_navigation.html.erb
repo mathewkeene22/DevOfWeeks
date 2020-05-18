@@ -4,6 +4,7 @@
       <a href="/" class="logo">
         <img src="<%= asset_path( 'logo.png' ) %>"/>
       </a>
+      <a href="#" data-target="mobile" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if current_user %>
           <li>
@@ -21,4 +22,19 @@
       </ul>
     </div>
   </nav>
+  <ul class="sidenav" id="mobile">
+    <% if current_user %>
+      <li>
+        <%= link_to new_election_path, class: "btn btn-primary" do %>
+          Create an Election
+        <% end %>
+      </li>
+      <li>
+        <%= link_to icebreakers_path, class: "btn btn-primary" do %>
+          Get an Icebreaker
+        <% end %>
+      </li>
+      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+    <% end %>
+  </ul>
 </div>

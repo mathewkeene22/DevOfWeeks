@@ -22,18 +22,10 @@
       </ul>
     </div>
   </nav>
-  <ul class="sidenav" id="mobile">
+  <ul class="sidenav right" id="mobile">
     <% if current_user %>
-      <li>
-        <%= link_to new_election_path, class: "btn btn-primary" do %>
-          Create an Election
-        <% end %>
-      </li>
-      <li>
-        <%= link_to icebreakers_path, class: "btn btn-primary" do %>
-          Get an Icebreaker
-        <% end %>
-      </li>
+      <li><%= link_to 'Create an Election', new_election_path %></li>
+      <li><%= link_to 'Get an Icebreaker', icebreakers_path %></li>
       <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
     <% end %>
   </ul>

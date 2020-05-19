@@ -12,7 +12,8 @@
     "coffeescript": "1.12.7",
     "jquery": "^3.5.1",
     "material-design-icons": "^3.0.1",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "yarn": "^1.22.4"
   },
   "version": "0.1.0",
   "devDependencies": {

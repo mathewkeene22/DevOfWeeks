@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :object_setter
+  before_action :object_setter, only: :create
 
   def create
     @vote = Vote.create(

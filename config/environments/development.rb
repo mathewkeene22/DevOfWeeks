@@ -51,8 +51,9 @@ Rails.application.configure do
   config.assets.debug = true
 
   # Suppress logger output for asset requests.
-  config.assets.quiet = true
-
+  config.assets.quiet = false
+  # FOR DOCKER
+  config.logger = Logger.new('/proc/1/fd/1')
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 

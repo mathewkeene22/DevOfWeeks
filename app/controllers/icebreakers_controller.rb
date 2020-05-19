@@ -8,7 +8,9 @@ class IcebreakersController < ApplicationController
   end
 
   def update_all_questions
-    Icebreaker.update_all(is_asked: false)
+    if Icebreaker.all.size != 0
+      Icebreaker.update_all(is_asked: false)
+    end
     redirect_to "/"
   end
 end

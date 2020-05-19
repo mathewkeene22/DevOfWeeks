@@ -1,0 +1,15 @@
+<div class="icebreakers section">
+  <div class="container">
+  <% if @icebreaker.present? %>
+    <div class='icebreaker-content'>
+      <div class='icebreaker-word-bubble'>
+        <div class='icebreaker-question'>
+          <h3><%= @icebreaker.question %></h3>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <p>You've broken all the ice there is! Maybe <%=  link_to 'reset the questions', { :action => :update_all_questions }, :method => :put %>. Or add some new ones.</p>
+  <% end %>
+  </div>
+</div>

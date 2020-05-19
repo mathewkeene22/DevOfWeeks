@@ -12,6 +12,12 @@ class VotesController < ApplicationController
     ElectionChannel.broadcast_to @election, @vote
   end
 
+  def update
+    @vote = Vote.find(params[:id])
+    @vote.update(is_seen: true)
+    ElectionChannel.broadcast_to @vote.election, @vote
+  end
+
   protected
 
   def object_setter

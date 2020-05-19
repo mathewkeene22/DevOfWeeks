@@ -1,5 +1,20 @@
 <% if @election.votes.present? %>
   <%= pie_chart @election.format_votes %>
+  <% @election.votes.each do |vote| %>
+    <div>
+    <% if(vote.is_seen) %>
+      User:
+      <p><%= vote.user.username %></p>
+      <p><%= vote.message %></p>
+    <% else %>
+      <%= form_with model: vote do |f| %>
+        <%= f.text_area :election_id, as: :hidden, class: 'hide' %>
+        <%= f.submit "Show", class: "btn" %>
+      <% end %>
+    <% end %>
+    </div>
+  <% end %>
 <% else %>
   <h4 class="chart-header">No one has voted yet</h4>
+
 <% end %>

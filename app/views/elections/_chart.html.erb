@@ -8,7 +8,6 @@
       <p><%= vote.message %></p>
     <% else %>
       <%= form_with model: vote do |f| %>
-        <%= f.text_area :election_id, as: :hidden, class: 'hide' %>
         <%= f.submit "Show", class: "btn" %>
       <% end %>
     <% end %>

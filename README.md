@@ -15,3 +15,6 @@ Each and every week, members of the [Evanta](https://www.evanta.com) Dev Team ca
 `open http://localhost:3001`
 
 Click button to migrate.
+
+### Add some Icebreakers
+`docker-compose run dow_app rake db:seed`

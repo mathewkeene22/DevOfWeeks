@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 2020_05_19_171827) do
     t.index ["name"], name: "index_elections_on_name", unique: true
   end
 
+  create_table "icebreakers", force: :cascade do |t|
+    t.string "question"
+    t.boolean "is_asked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "email", default: "", null: false

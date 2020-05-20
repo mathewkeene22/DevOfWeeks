@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   resources :votes
   resources :elections
+  resources :icebreakers, only: :index
+  put 'update_all', to: 'icebreakers#update_all_questions'
 end

@@ -9,6 +9,7 @@
       <%= f.text_area :message, size: "60x12" %>
       <%= f.submit "Create", class: "btn", disabled: @election.allow_vote(current_user) %>
     <% end %>
+    <%= react_component('elections/election_form') %>
   </div>
 
 </div>

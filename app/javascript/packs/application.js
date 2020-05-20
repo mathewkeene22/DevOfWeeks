@@ -7,3 +7,7 @@ require("chartkick");
 require("chart.js");
 require("packs/election");
 
+// Support component names relative to this directory:
+var componentRequireContext = require.context("components", true);
+var ReactRailsUJS = require("react_ujs");
+ReactRailsUJS.useContext(componentRequireContext);

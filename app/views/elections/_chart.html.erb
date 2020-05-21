@@ -2,18 +2,16 @@
   <%= pie_chart @election.format_votes %>
   <% @election.votes.each do |vote| %>
     <div>
-    <% if(vote.is_seen) %>
-      User:
-      <p><%= vote.user.username %></p>
-      <p><%= vote.message %></p>
-    <% else %>
-      <%= form_with model: vote do |f| %>
-        <%= f.submit "Show", class: "btn" %>
+      <% if(vote.is_seen) %>
+        <p>Vote for: <%= vote.user.username %></p>
+        <p class="vote-message"><%= vote.message.html_safe %></p>
+      <% else %>
+        <%= form_with model: vote do |f| %>
+          <%= f.submit "Show", class: "btn" %>
+        <% end %>
       <% end %>
-    <% end %>
     </div>
   <% end %>
 <% else %>
   <h4 class="chart-header">No one has voted yet</h4>
-
 <% end %>

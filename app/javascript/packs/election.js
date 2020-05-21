@@ -9,7 +9,7 @@ $(document).on("turbolinks:load", function () {
       data: "",
       success: function (data) {
         $(".chart-container").html(data);
-        $("input.btn").attr("disabled", true);
+        $("#vote_form input.btn").attr("disabled", true);
       },
       error: function (data) {
         console.log("something went wrong");

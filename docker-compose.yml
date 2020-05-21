@@ -10,6 +10,7 @@ services:
       - REDIS_URL=redis://redis:6379
       - DATABASE_URL=postgres://postgres@db:5432/DevOfWeeks_development
       - PORT=3000
+      - TERM=dumb
     build:
       context: .
       dockerfile: ./docker/DockerFile

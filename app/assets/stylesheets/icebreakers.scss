@@ -1,0 +1,46 @@
+.icebreakers {
+  .container {
+    min-height: 100vh;
+    .icebreaker-content {
+      display: flex;
+      animation: slide-down 2s ease;
+      animation-fill-mode: forwards;
+      // bubble starts
+      .icebreaker-word-bubble {
+        position: relative;
+        background: #30ffcf;
+        border-radius: .4em;
+        width: 85%;
+        padding: 10%;
+        margin: auto;
+        text-align: center;
+      }
+      .icebreaker-word-bubble:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: #30ffcf;
+        border-bottom: 0;
+        border-left: 0;
+        margin-left: -10px;
+        margin-bottom: -20px;
+      }
+      // bubble ends
+    }
+  }
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      top: 0;
+    }
+
+    to {
+      opacity: 1;
+      top: 20px;
+    }
+  }
+}

@@ -36,19 +36,24 @@ nav {
   margin: 30px auto;
 }
 
-label, 
+label,
 #vote_nominee_id,
-input::placeholder  { 
+input::placeholder  {
   color: #9b2cfb;
 }
 
-#vote_form {
+select {
+  display: block;
+}
+
+.election-form {
   float: left;
+  width: 100%;
   margin: 20px;
   select {
     display: block;
   }
-  #vote_message {
+  .vote-message {
     margin: 20px auto;
     background: white;
     color: #9b2cfb;;
@@ -78,18 +83,18 @@ a {
   }
 }
 
-input:not([type]):focus:not([readonly]), 
-input[type=text]:not(.browser-default):focus:not([readonly]), 
-input[type=password]:not(.browser-default):focus:not([readonly]), 
-input[type=email]:not(.browser-default):focus:not([readonly]), 
-input[type=url]:not(.browser-default):focus:not([readonly]), 
-input[type=time]:not(.browser-default):focus:not([readonly]), 
-input[type=date]:not(.browser-default):focus:not([readonly]), 
-input[type=datetime]:not(.browser-default):focus:not([readonly]), 
-input[type=datetime-local]:not(.browser-default):focus:not([readonly]), 
-input[type=tel]:not(.browser-default):focus:not([readonly]), 
-input[type=number]:not(.browser-default):focus:not([readonly]), 
-input[type=search]:not(.browser-default):focus:not([readonly]), 
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid #9b2cfb;
   box-shadow: 0 1px 0 0 #9b2cfb;

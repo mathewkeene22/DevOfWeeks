@@ -3,7 +3,7 @@
   <% @election.votes.each do |vote| %>
     <div>
       <% if(vote.is_seen) %>
-        <p>Vote for: <%= vote.user.username %></p>
+        <p>Vote for: <%= vote.nominee.username %></p>
         <p class="vote-message"><%= vote.message.html_safe %></p>
       <% else %>
         <%= form_with model: vote do |f| %>

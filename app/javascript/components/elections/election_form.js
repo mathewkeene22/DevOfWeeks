@@ -6,6 +6,8 @@ const ElectionForm = (props) => {
   const [writeIn, setWriteIn] = React.useState('')
   const [showWriteInInput, setShowWriteInInput] = React.useState(false)
   const [message, setMessage] = React.useState('')
+  const [hasVoted, setHasVoted] = React.useState(props.has_voted)
+
   const writeInOnChange = (e) => {
     setWriteIn(e.target.value)
   }
@@ -39,6 +41,7 @@ const ElectionForm = (props) => {
       },
       success: function (data) {
         alert('working')
+        setHasVoted(true)
         $('.vote-message').val('')
       },
       error: function (data) {
@@ -60,7 +63,12 @@ const ElectionForm = (props) => {
       { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
 
       { <NomineeMessage onChange={ messageOnChange } message={ message } /> }
-      <button type="submit" className="btn" onClick={ handleSubmit } >
+      <button
+        type="submit"
+        className="btn"
+        onClick={ handleSubmit }
+        disabled={ hasVoted }
+      >
         Submit
       </button>
     </div>

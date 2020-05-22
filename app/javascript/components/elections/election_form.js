@@ -55,7 +55,7 @@ const ElectionForm = (props) => {
 
       <select onChange={ nomineeDropdownChange }>
         <option value="">Select...</option>
-        { <NomineeDropdownOptions nominees={props.nominees} /> }
+        { <NomineeDropdownOptions nominees={ props.nominees } /> }
         <option value="write_in">Write in your own answer!</option>
       </select>
 
@@ -64,7 +64,7 @@ const ElectionForm = (props) => {
       { <NomineeMessage onChange={ messageOnChange } message={ message } /> }
       <button
         type="submit"
-        className="btn"
+        className="btn right"
         onClick={ handleSubmit }
         disabled={ hasVoted }
       >
@@ -77,7 +77,7 @@ const ElectionForm = (props) => {
 const NomineeDropdownOptions = (props) => (
   props.nominees.map((nominee) => {
     return (
-      <option key={ nominee.id } value={ nominee.id }>
+      <option key={ nominee.id } value={ nominee.id } >
         {nominee.username}
       </option>
     )

@@ -102,11 +102,3 @@ const NomineeMessage = (props) => (
 
 export default ElectionForm
 // ReactDOM.render(<ElectionForm />, $('.election-form'))
-
-// TODO
-// disable button on submet
-// set disabled state from erb when you have already voted
-// update database to allow null nominee_id ✅
-// update database for write in name ✅
-// disaply write in in chart/update query
-// replicate Nate's message show functionallity

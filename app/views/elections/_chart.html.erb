@@ -7,11 +7,11 @@
         <p class="vote-message"><%= vote.message.html_safe %></p>
       <% else %>
         <%= form_with model: vote do |f| %>
-          <%= f.submit "Show", class: "btn" %>
+          <%= f.submit "Show", class: "btn show-message" %>
         <% end %>
       <% end %>
     </div>
   <% end %>
 <% else %>
-  <h4 class="chart-header">No one has voted yet</h4>
+  <h5>No one has voted yet</h5>
 <% end %>

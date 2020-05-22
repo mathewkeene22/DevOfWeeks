@@ -59,6 +59,9 @@ select {
 
 .btn {
   background-color: #9b2cfb;
+  &.show-message {
+    margin-bottom: 15px;
+  }
   &:hover, &:focus {
     background-color: #9b2cfb;
     color: #30ffcf;
@@ -67,10 +70,15 @@ select {
 
 h4 {
   color: #30ffcf;
-  text-shadow: #9B2CFD 2px 2px 5px;
+  text-shadow: #9b2cfb 2px 2px 5px;
   &.chart-header {
     text-align: center;
   }
+}
+
+h5 {
+  text-align: center;
+  color: #9b2cfb
 }
 
 a {

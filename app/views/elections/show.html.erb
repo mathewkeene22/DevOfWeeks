@@ -1,5 +1,6 @@
 <div class="election" data-channel-subscribe="election" data-election-id="<%= @election.id %>">
   <div class="container">
+    <h4 class="chart-header"><%= @election.name %></h4>
     <div class="chart-container">
       <%= render partial: 'elections/chart' %>
     </div>

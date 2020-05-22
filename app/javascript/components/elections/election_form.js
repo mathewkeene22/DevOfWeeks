@@ -1,29 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const WriteInInput = () => {
+const ElectionForm = (props) => {
+  const [nomineeId, setNomineeId] = React.useState('')
   const [writeIn, setWriteIn] = React.useState('');
+  const [showWriteInInput, setShowWriteInInput] = React.useState(false);
+  const [message, setMessage] = React.useState('');
   const writeInOnChange = (e) => {
     setWriteIn(e.target.value);
   };
-  return(
-    <div className="write-in">
-      <input
-        className="write-in-input"
-        placeholder="Write in..."
-        type="text"
-        name="name"
-        onChange={writeInOnChange}
-        value={writeIn}
-      />
-    </div>
-  )
-}
-
-const ElectionForm = (props) => {
-  const [nomineeId, setNomineeId] = React.useState('')
-  const [showWriteInInput, setShowWriteInInput] = React.useState(false);
-  const [message, setMessage] = React.useState('');
 
   const messageOnChange = (e) => {
     setMessage(e.target.value);
@@ -62,25 +47,17 @@ const ElectionForm = (props) => {
     });
   }
 
-  const nomineeDropdown = props.nominees.map((nominee) => {
-    return (
-      <option key={nominee.id} value={nominee.id}>
-        {nominee.username}
-      </option>
-    );
-  });
-
   return (
     <div className="election-form">
       <input type="hidden" className="election-id" value={props.election_id} />
 
       <select onChange={nomineeDropdownChange}>
         <option value="">Select...</option>
-        {nomineeDropdown}
+        {<NomineeDropdownOptions nominees={props.nominees} />}
         <option value="write_in">Write in your own answer!</option>
       </select>
 
-      {showWriteInInput ? <WriteInInput /> : null}
+      { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
 
       <textarea
         className="vote-message"
@@ -95,6 +72,29 @@ const ElectionForm = (props) => {
     </div>
   );
 }
+
+const NomineeDropdownOptions = (props) => (
+  props.nominees.map((nominee) => {
+    return (
+      <option key={nominee.id} value={ nominee.id }>
+        {nominee.username}
+      </option>
+    );
+  })
+);
+
+const WriteInInput = (props) => (
+  <div className="write-in">
+    <input
+      className="write-in-input"
+      placeholder="Write in..."
+      type="text"
+      name="name"
+      onChange={props.onChange}
+      value={props.writeIn}
+    />
+  </div>
+)
 
 export default ElectionForm;
 // ReactDOM.render(<ElectionForm />, $('.election-form'));

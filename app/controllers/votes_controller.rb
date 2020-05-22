@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :object_setter
+  before_action :object_setter, only: :create
 
   def create
     @vote = Vote.create(
@@ -11,6 +11,12 @@ class VotesController < ApplicationController
       created_by: current_user.id
     )
     ElectionChannel.broadcast_to @election, @vote
+  end
+
+  def update
+    @vote = Vote.find(params[:id])
+    @vote.update(is_seen: true)
+    ElectionChannel.broadcast_to @vote.election, @vote
   end
 
   protected

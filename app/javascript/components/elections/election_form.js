@@ -40,7 +40,6 @@ const ElectionForm = (props) => {
         },
       },
       success: function (data) {
-        alert('working')
         setHasVoted(true)
         $('.vote-message').val('')
       },

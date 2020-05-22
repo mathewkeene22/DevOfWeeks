@@ -59,14 +59,8 @@ const ElectionForm = (props) => {
 
       { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
 
-      <textarea
-        className="vote-message"
-        placeholder="Type something witty..."
-        rows="4"
-        value={message}
-        onChange={messageOnChange}
-      />
-      <button type="submit" className="btn" onClick={handleSubmit}>
+      { <NomineeMessage onChange={ messageOnChange } message={ message } /> }
+      <button type="submit" className="btn" onClick={ handleSubmit } >
         Submit
       </button>
     </div>
@@ -75,13 +69,13 @@ const ElectionForm = (props) => {
 
 const NomineeDropdownOptions = (props) => (
   props.nominees.map((nominee) => {
-    return (
+    return ( // try without this return ???
       <option key={nominee.id} value={ nominee.id }>
         {nominee.username}
       </option>
     );
   })
-);
+)
 
 const WriteInInput = (props) => (
   <div className="write-in">
@@ -90,10 +84,20 @@ const WriteInInput = (props) => (
       placeholder="Write in..."
       type="text"
       name="name"
-      onChange={props.onChange}
-      value={props.writeIn}
+      value={ props.writeIn }
+      onChange={ props.onChange }
     />
   </div>
+)
+
+const NomineeMessage = (props) => (
+  <textarea
+    className="vote-message"
+    placeholder="Type something witty..."
+    rows="4"
+    value={ props.message }
+    onChange={ props.onChange }
+  />
 )
 
 export default ElectionForm;

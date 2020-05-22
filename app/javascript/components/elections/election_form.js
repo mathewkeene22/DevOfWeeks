@@ -1,29 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 const ElectionForm = (props) => {
   const [nomineeId, setNomineeId] = React.useState('')
-  const [writeIn, setWriteIn] = React.useState('');
-  const [showWriteInInput, setShowWriteInInput] = React.useState(false);
-  const [message, setMessage] = React.useState('');
+  const [writeIn, setWriteIn] = React.useState('')
+  const [showWriteInInput, setShowWriteInInput] = React.useState(false)
+  const [message, setMessage] = React.useState('')
   const writeInOnChange = (e) => {
-    setWriteIn(e.target.value);
-  };
+    setWriteIn(e.target.value)
+  }
 
   const messageOnChange = (e) => {
-    setMessage(e.target.value);
-  };
+    setMessage(e.target.value)
+  }
 
   const nomineeDropdownChange = (e) => {
     if (e.currentTarget.value == 'write_in') {
-      setShowWriteInInput(true);
-      setNomineeId(null);
+      setShowWriteInInput(true)
+      setNomineeId(null)
     } else {
-      setShowWriteInInput(false);
-      setNomineeId(e.currentTarget.value);
-      setWriteIn('');
+      setShowWriteInInput(false)
+      setNomineeId(e.currentTarget.value)
+      setWriteIn('')
     }
-  };
+  }
 
   const handleSubmit = () => {
     $.ajax({
@@ -33,27 +33,27 @@ const ElectionForm = (props) => {
         vote: {
           election_id: props.election_id,
           nominee_id: nomineeId,
-          write_in_name: writeIn,
+          write_in: writeIn,
           message: message,
         },
       },
       success: function (data) {
-        alert('working');
-        $('.vote-message').val('');
+        alert('working')
+        $('.vote-message').val('')
       },
       error: function (data) {
-        console.log('something went wrong');
+        console.log('something went wrong')
       },
-    });
+    })
   }
 
   return (
     <div className="election-form">
-      <input type="hidden" className="election-id" value={props.election_id} />
+      <input type="hidden" className="election-id" value={ props.election_id } />
 
-      <select onChange={nomineeDropdownChange}>
+      <select onChange={ nomineeDropdownChange }>
         <option value="">Select...</option>
-        {<NomineeDropdownOptions nominees={props.nominees} />}
+        { <NomineeDropdownOptions nominees={props.nominees} /> }
         <option value="write_in">Write in your own answer!</option>
       </select>
 
@@ -64,16 +64,16 @@ const ElectionForm = (props) => {
         Submit
       </button>
     </div>
-  );
+  )
 }
 
 const NomineeDropdownOptions = (props) => (
   props.nominees.map((nominee) => {
-    return ( // try without this return ???
-      <option key={nominee.id} value={ nominee.id }>
+    return (
+      <option key={ nominee.id } value={ nominee.id }>
         {nominee.username}
       </option>
-    );
+    )
   })
 )
 
@@ -100,5 +100,13 @@ const NomineeMessage = (props) => (
   />
 )
 
-export default ElectionForm;
-// ReactDOM.render(<ElectionForm />, $('.election-form'));
+export default ElectionForm
+// ReactDOM.render(<ElectionForm />, $('.election-form'))
+
+// TODO
+// disable button on submet
+// set disabled state from erb when you have already voted
+// update database to allow null nominee_id ✅
+// update database for write in name ✅
+// disaply write in in chart/update query
+// replicate Nate's message show functionallity

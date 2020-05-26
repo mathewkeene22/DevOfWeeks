@@ -28,7 +28,10 @@ gem 'jquery-rails'
 # User authentication
 gem 'devise'
 gem 'rb-readline'
-gem "chartkick"
+gem 'chartkick'
+gem 'babel-source', '~> 5.8.35'
+# React gem created by ReactJS. Read more: https://github.com/reactjs/react-rails
+gem 'react-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

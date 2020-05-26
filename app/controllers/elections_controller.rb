@@ -9,7 +9,7 @@ class ElectionsController < ApplicationController
     @vote = Vote.new election: @election
     @votes = @election.votes.includes(:user)
     if params[:refresh_chart]
-      render partial: "elections/chart"
+      render partial: 'elections/chart'
     end
   end
 

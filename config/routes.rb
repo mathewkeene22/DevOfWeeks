@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :votes
   resources :poker_tables, only: %i[index]
-  put 'poker_tables/clear_bids', to: 'poker_tables#clear_bids'
+  post 'poker_tables/clear_bids', to: 'poker_tables#clear_bids'
   post 'poker_tables/update_bid', to: 'poker_tables#update_bid'
   resources :elections
   resources :icebreakers, only: :index

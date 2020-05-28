@@ -12,9 +12,6 @@ const PokerTableForm = (props) => {
         },
       },
       success: function (data) {
-        debugger
-        setHasVoted(true)
-        $('.vote-message').val('')
       },
       error: function (data) {
         console.log('something went wrong')
@@ -22,12 +19,29 @@ const PokerTableForm = (props) => {
     })
   }
 
-  return (
-    <div className="election-form">
+  const clearAll = () => {
+    $.ajax({
+      url: '/poker_tables/clear_bids',
+      type: 'POST',
+      success: function (data) {
+      },
+      error: function (data) {
+        console.log('something went wrong')
+      },
+    })
+  }
 
+
+  return (
+    <div>
+      <button
+      className="btn right"
+      onClick={ clearAll }
+      >
+        Clear All
+      </button>
       <select>
         <option value="">Select...</option>
-
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -43,7 +57,9 @@ const PokerTableForm = (props) => {
       >
         Submit
       </button>
+
     </div>
+
   )
 }
 

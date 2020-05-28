@@ -1,17 +1,15 @@
-Rerender me!
 <% @users.each do |user| %>
-
-<div class="flip-card" style="display: inline-block">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      <%= user.email %>
+  <% if(user.bid) %>
+    <div class="flip-card flipped" style="display: inline-block">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <%= user.email %>
+        </div>
+        <div class="flip-card-back">
+        <h1><%= user.bid %></h1>
+        <p><%= user.email %></p>
+        </div>
+      </div>
     </div>
-    <div class="flip-card-back">
-      <h1><%= user.email %></h1>
-      <p><%= user.bid %></p>
-      <p>ipsum Lorem</p>
-    </div>
-  </div>
-</div>
-
+  <% end %>
 <% end %>

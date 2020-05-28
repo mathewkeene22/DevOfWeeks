@@ -17,7 +17,6 @@
     height: 100%;
     text-align: center;
     transition: transform 0.8s;
-    transform: rotateY(180deg);
     transform-style: preserve-3d;
   }
 
@@ -25,6 +24,28 @@
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
   }
+
+  // .flip-card.flipped  .flip-card-inner {
+  //   -webkit-animation: flip 10s;
+  //   animation: flip 10s;
+  // }
+
+  // @-webkit-keyframes flip {
+  //   from {
+  //     transform: rotateY(0deg)
+  //   }
+  //   to {
+  //     transform: rotateY(180deg)
+  //   }
+  // }
+  // @keyframes flip {
+  //   from {
+  //     transform: rotateY(0deg)
+  //   }
+  //   to {
+  //     transform: rotateY(180deg)
+  //   }
+  // }
 
   /* Position the front and back side */
   .flip-card-front, .flip-card-back {

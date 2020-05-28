@@ -2,13 +2,19 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 const PokerTableForm = (props) => {
+  const [bidValue, setbidValue] = React.useState('')
+
+  const bidDropdownChange  = (e) => {
+    setbidValue(e.currentTarget.value)
+  };
+
   const handleSubmit = () => {
     $.ajax({
       url: '/poker_tables/update_bid',
       type: 'POST',
       data: {
         poker_table: {
-          bid: 2
+          bid: bidValue
         },
       },
       success: function (data) {
@@ -34,13 +40,10 @@ const PokerTableForm = (props) => {
 
   return (
     <div>
-      <button
-      className="btn right"
-      onClick={ clearAll }
-      >
+      <button className="btn right" onClick={clearAll}>
         Clear All
       </button>
-      <select>
+      <select onChange={ bidDropdownChange } >
         <option value="">Select...</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -50,17 +53,11 @@ const PokerTableForm = (props) => {
         <option value="6">6</option>
       </select>
 
-      <button
-        type="submit"
-        className="btn right"
-        onClick={ handleSubmit }
-      >
+      <button type="submit" className="btn right" onClick={handleSubmit}>
         Submit
       </button>
-
     </div>
-
-  )
+  );
 }
 
 export default PokerTableForm

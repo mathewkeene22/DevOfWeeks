@@ -40,10 +40,7 @@ const PokerTableForm = (props) => {
 
   return (
     <div>
-      <button className="btn right" onClick={clearAll}>
-        Clear All
-      </button>
-      <select onChange={ bidDropdownChange } >
+      <select onChange={bidDropdownChange}>
         <option value="">Select...</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -52,7 +49,9 @@ const PokerTableForm = (props) => {
         <option value="5">5</option>
         <option value="6">6</option>
       </select>
-
+      <button className="btn right" onClick={clearAll}>
+        Clear All
+      </button>
       <button type="submit" className="btn right" onClick={handleSubmit}>
         Submit
       </button>

@@ -2,7 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
-.flip-card {
+.poker-table {
+  .btn {
+    margin: 5px;
+  }
+  .flip-card {
     background-color: transparent;
     width: 200px;
     height: 280px;
@@ -69,3 +73,4 @@
     color: white;
     transform: rotateY(180deg);
   }
+}

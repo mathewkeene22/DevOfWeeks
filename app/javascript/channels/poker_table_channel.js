@@ -15,7 +15,7 @@ $(document).on("turbolinks:load", function () {
                 type: "get",
                 data: "",
                 success: function (data) {
-                    $(".chart-container").html(data);
+                    $(".results-container").html(data);
                 },
                 error: function (data) {
                     console.log("something went wrong");

@@ -1,0 +1,15 @@
+<div class="poker-table">
+  <div class="container">
+    <h4 class="chart-header"></h4>
+    <div class="chart-container">
+      <%= render partial: 'poker_tables/results' %>
+    </div>
+    <div id="election-form">
+    <%=
+      react_component('poker_tables/poker_table_form',
+        user_id: current_user.id,
+      )
+    %>
+    </div>
+  </div>
+</div>

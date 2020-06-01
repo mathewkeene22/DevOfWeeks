@@ -1,0 +1,18 @@
+<% @users.each do |user| %>
+  <% if(user.bid) %>
+    <div class="bid col s3">
+      <div class="flip-card flipped" style="display: inline-block">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+          </div>
+          <div class="flip-card-back">
+            <h1><%= user.bid %></h1>
+          </div>
+        </div>
+      </div>
+      <div class="user-title">
+        <%= user.username %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

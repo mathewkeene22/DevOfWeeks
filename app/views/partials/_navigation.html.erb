@@ -17,6 +17,11 @@
               Get an Icebreaker
             <% end %>
           </li>
+          <li>
+            <%= link_to poker_tables_path, class: "btn btn-primary" do %>
+              Scrum Poker
+            <% end %>
+          </li>
           <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
         <% end %>
       </ul>

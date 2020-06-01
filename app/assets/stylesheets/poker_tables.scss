@@ -1,0 +1,76 @@
+// Place all the styles related to the Votes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.poker-table {
+  .btn {
+    margin: 5px;
+  }
+  .flip-card {
+    background-color: transparent;
+    width: 200px;
+    height: 280px;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card.flipped  .flip-card-inner {
+    -webkit-animation: flip 3s forwards;
+    animation: flip 3s forwards;
+  }
+
+  @-webkit-keyframes flip {
+    from {
+      transform: rotateY(0deg)
+    }
+    to {
+      transform: rotateY(180deg)
+    }
+  }
+  @keyframes flip {
+    from {
+      transform: rotateY(0deg)
+    }
+    to {
+      transform: rotateY(180deg)
+    }
+  }
+
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+    background-image: image-url('card.png');
+    background-size: cover;
+  }
+
+  /* Style the back side */
+  .flip-card-back {
+    background-color: #9b2cfb;
+    color: white;
+    transform: rotateY(180deg);
+  }
+}

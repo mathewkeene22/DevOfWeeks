@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .poker-table {
+  .results-container {
+    background: #35654d;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+  }
+
   .btn {
     margin: 5px;
   }
@@ -72,5 +79,8 @@
     background-color: #9b2cfb;
     color: white;
     transform: rotateY(180deg);
+  }
+  .user-title {
+    text-align: center;
   }
 }

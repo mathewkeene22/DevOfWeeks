@@ -1,3 +1,4 @@
+@import "variables";
 .icebreakers {
   .container {
     min-height: 100vh;
@@ -8,8 +9,9 @@
       // bubble starts
       .icebreaker-word-bubble {
         position: relative;
-        background: #30ffcf;
+        background: $darkest;
         border-radius: .4em;
+        color: $teal;
         width: 85%;
         padding: 10%;
         margin: auto;
@@ -23,7 +25,7 @@
         width: 0;
         height: 0;
         border: 20px solid transparent;
-        border-top-color: #30ffcf;
+        border-top-color: $darkest;
         border-bottom: 0;
         border-left: 0;
         margin-left: -10px;

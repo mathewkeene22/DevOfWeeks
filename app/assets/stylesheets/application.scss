@@ -13,8 +13,16 @@
 *= require_tree .
 *= require_self
 */
+@import "materialize-css/dist/css/materialize";
 @import "materialize";
 @import "variables";
+
+#dropdown1 {
+  right: 0px !important;
+  position: absolute !important;
+  top: 65px !important;
+  width: 200px !important;
+}
 
 body {
   background-color: $dark;
@@ -25,6 +33,9 @@ nav {
   .logo {
     position: relative;
     top: -6px;
+    img {
+      max-width: 30%;
+    }
   }
   ul {
     a {
@@ -39,7 +50,8 @@ nav {
 
 label,
 #vote_nominee_id,
-input::placeholder  {
+input::placeholder,
+input  {
   color: $teal;
 }
 
@@ -61,7 +73,7 @@ select {
   }
 }
 
-.btn {
+.btn, input[type="submit"] {
   background-color: transparent;
   border: 2px solid $teal;
   color: $teal;

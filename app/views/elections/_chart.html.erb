@@ -1,13 +1,14 @@
 <% if @election.votes.present? %>
-  <%= pie_chart @election.format_votes %>
+  <%= pie_chart @election.format_votes, donut: true, library: { legend: { labels: { fontColor: "#66FCF1" } } } %>
   <% @election.votes.each do |vote| %>
     <div>
       <% if(vote.is_seen) %>
-        <p>Vote for: <%= vote.nominee_name %></p>
+        <h5 class="vote-message-title">Vote for: <%= vote.nominee_name %></h5>
         <p class="vote-message"><%= vote.message.html_safe %></p>
       <% else %>
+        <% disabled = @election.created_by == current_user.id ? '' : 'disabled' %>
         <%= form_with model: vote do |f| %>
-          <%= f.submit "Show", class: "btn show-message" %>
+          <%= f.submit "Show", class: "btn right show-message #{disabled}" %>
         <% end %>
       <% end %>
     </div>

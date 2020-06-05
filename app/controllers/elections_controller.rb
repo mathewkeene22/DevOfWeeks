@@ -18,7 +18,7 @@ class ElectionsController < ApplicationController
   end
 
   def create
-    @election = Election.new permitted_parameters
+    @election = Election.new(permitted_parameters.merge!(created_by: current_user.id))
 
     if @election.save
       flash[:success] = "Election #{@election.name} was created successfully"

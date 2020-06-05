@@ -1,37 +1,20 @@
 <div class="navbar-fixed">
+  <ul id="dropdown1" class="dropdown-content">
+    <li><%= link_to 'Create an Election', new_election_path %></li>
+    <li><%= link_to 'Get an Icebreaker', icebreakers_path %></li>
+    <li><%= link_to 'Scrum Poker', poker_tables_path %></li>
+    <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+  </ul>
   <nav>
     <div class="nav-wrapper">
       <a href="/" class="logo">
         <img src="<%= asset_path( 'logo.png' ) %>"/>
       </a>
-      <a href="#" data-target="mobile" class="right sidenav-trigger"><i class="material-icons">X</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if current_user %>
-          <li>
-            <%= link_to new_election_path, class: "btn btn-primary" do %>
-              Create an Election
-            <% end %>
-          </li>
-          <li>
-            <%= link_to icebreakers_path, class: "btn btn-primary" do %>
-              Get an Icebreaker
-            <% end %>
-          </li>
-          <li>
-            <%= link_to poker_tables_path, class: "btn btn-primary" do %>
-              Scrum Poker
-            <% end %>
-          </li>
-          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-        <% end %>
-      </ul>
+      <% if current_user %>
+        <ul class="right">
+          <li><a class="dropdown-trigger" href="#" data-target="dropdown1"><i class="material-icons right">menu</i></a></li>
+        </ul>
+      <% end %>
     </div>
   </nav>
-  <ul class="sidenav right" id="mobile">
-    <% if current_user %>
-      <li><%= link_to 'Create an Election', new_election_path %></li>
-      <li><%= link_to 'Get an Icebreaker', icebreakers_path %></li>
-      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-    <% end %>
-  </ul>
 </div>

@@ -1,16 +1,28 @@
+@import "variables";
 // Place all the styles related to the Elections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.vote-message {
-  background-color: grey;
-  border: 1px solid, grey;
-  border-radius: 2px;
-  color: white;
-  padding: 5px;
+h5.vote-message-title {
+  text-align: left;
 }
 
+.vote-message {
+  background-color: $darkest;
+  border: 1px solid $teal;
+  border-radius: 2px;
+  color: $teal;
+  padding: 5px;
+}
+.chart-inner {
+  position: relative;
+}
 .vote-logo {
-  height: 110px;
-  position: absolute;
-  margin-top: 5px;
+    height: 140px;
+    position: absolute;
+    z-index: -2;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: -18%;
+    margin: auto;
 }

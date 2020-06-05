@@ -13,9 +13,16 @@ h5.vote-message-title {
   color: $teal;
   padding: 5px;
 }
-
+.chart-inner {
+  position: relative;
+}
 .vote-logo {
-  height: 110px;
-  position: absolute;
-  margin-top: 5px;
+    height: 140px;
+    position: absolute;
+    z-index: -2;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: -18%;
+    margin: auto;
 }

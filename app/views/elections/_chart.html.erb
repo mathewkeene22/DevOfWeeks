@@ -1,5 +1,8 @@
 <% if @election.votes.present? %>
-  <%= pie_chart @election.format_votes, donut: true, library: { legend: { labels: { fontColor: "#66FCF1" } } } %>
+  <div class="chart-inner">
+    <img src="<%= asset_path( 'vote.png' ) %>" class="vote-logo" />
+    <%= pie_chart @election.format_votes, donut: true, library: { legend: { labels: { fontColor: "#66FCF1" } } } %>
+  </div>
   <% @election.votes.each do |vote| %>
     <div>
       <% if(vote.is_seen) %>

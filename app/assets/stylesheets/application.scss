@@ -22,6 +22,17 @@
   position: absolute !important;
   top: 65px !important;
   width: 200px !important;
+  background-color: $darkest;
+  a {
+    color: $teal;
+  }
+  li:hover {
+    border-bottom: none;
+    background-color: $teal;
+    a {
+      color: $darkest;
+    }
+  }
 }
 
 body {

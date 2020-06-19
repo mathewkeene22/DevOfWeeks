@@ -3,6 +3,7 @@ class PokerTablesController < ApplicationController
 
   def index
     @users = User.all
+    @show_cards = params[:show_cards].presence || ''
     if params[:refresh_chart]
       render partial: 'poker_tables/results'
     end
@@ -16,5 +17,9 @@ class PokerTablesController < ApplicationController
   def clear_bids
     User.update_all(bid: nil)
     PokerTableChannel.broadcast_to User.first, User.all
+  end
+
+  def flip_cards
+    PokerTableChannel.broadcast_to User.first, flip_cards: true
   end
 end

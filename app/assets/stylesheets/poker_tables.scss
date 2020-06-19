@@ -32,9 +32,9 @@
   }
 
   /* Do an horizontal flip when you move the mouse over the flip box container */
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
+  // .flip-card:hover .flip-card-inner {
+  //   transform: rotateY(180deg);
+  // }
 
   .flip-card.flipped  .flip-card-inner {
     -webkit-animation: flip 3s forwards;
@@ -65,12 +65,13 @@
     height: 100%;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
+    border-radius: 8px;
   }
 
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
     background-color: #bbb;
-    color: black;
+    color: rgb(158, 156, 156);
     background-image: image-url('card.png');
     background-size: cover;
   }

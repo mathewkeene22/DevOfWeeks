@@ -25,6 +25,21 @@ const PokerTableForm = (props) => {
     })
   }
 
+  const showBids = () => {
+    $.ajax({
+      url: '/poker_tables/flip_cards',
+      type: 'POST',
+      data: {
+        show_cards: true
+      },
+      success: function (data) {
+      },
+      error: function (data) {
+        console.log('something went wrong')
+      },
+    })
+  }
+
   const clearAll = () => {
     $.ajax({
       url: '/poker_tables/clear_bids',
@@ -49,6 +64,9 @@ const PokerTableForm = (props) => {
         <option value="5">5</option>
         <option value="6">6</option>
       </select>
+      <button className="btn right" onClick={showBids}>
+        Flip Cards
+      </button>
       <button className="btn right" onClick={clearAll}>
         Clear All
       </button>

@@ -1,7 +1,8 @@
 <% @users.each do |user| %>
   <% if(user.bid) %>
     <div class="bid col s3">
-      <div class="flip-card flipped" style="display: inline-block">
+
+      <div class="flip-card <%= @show_cards == 'true' ? 'flipped' : ''%>" style="display: inline-block">
         <div class="flip-card-inner">
           <div class="flip-card-front">
           </div>

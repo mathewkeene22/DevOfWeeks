@@ -18,6 +18,9 @@
     border-radius: 10px;
     color: white;
     min-height: 320px;
+    &.row {
+      padding: 25px 5px;
+    }
   }
 
   .btn {
@@ -28,6 +31,7 @@
     width: auto;
     height: 270px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    margin: 15px 0;
   }
 
   /* This container is needed to position the front and back side */
@@ -89,6 +93,7 @@
   }
   .user-title {
     text-align: center;
+    font-weight: bold;
   }
   @media screen and (max-width: 950px) {
     .flip-card {

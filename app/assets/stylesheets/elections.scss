@@ -17,12 +17,7 @@ h5.vote-message-title {
   position: relative;
 }
 .vote-logo {
-    height: 140px;
-    position: absolute;
-    z-index: -2;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: -18%;
-    margin: auto;
+  height: 140px;
+  margin: auto;
+  display: block;
 }

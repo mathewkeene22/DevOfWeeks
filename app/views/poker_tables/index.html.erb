@@ -4,7 +4,7 @@
     <div class="results-container row">
       <%= render partial: 'poker_tables/results' %>
     </div>
-    <div id="election-form">
+    <div id="poker-table-form">
       <%=
         react_component('poker_tables/poker_table_form',
           user_id: current_user.id,

@@ -4,11 +4,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .poker-table {
+  select {
+    margin: 5px;
+    max-width: 65%;
+  }
+  .form-inner-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+  }
   .results-container {
     background: #35654d;
     padding: 10px;
     border-radius: 10px;
     color: white;
+    min-height: 320px;
   }
 
   .btn {
@@ -16,8 +25,8 @@
   }
   .flip-card {
     background-color: transparent;
-    width: 200px;
-    height: 280px;
+    width: auto;
+    height: 270px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
   }
 
@@ -31,14 +40,9 @@
     transform-style: preserve-3d;
   }
 
-  /* Do an horizontal flip when you move the mouse over the flip box container */
-  // .flip-card:hover .flip-card-inner {
-  //   transform: rotateY(180deg);
-  // }
-
   .flip-card.flipped  .flip-card-inner {
-    -webkit-animation: flip 3s forwards;
-    animation: flip 3s forwards;
+    -webkit-animation: flip .5s forwards;
+    animation: flip .5s forwards;
   }
 
   @-webkit-keyframes flip {
@@ -74,6 +78,7 @@
     color: rgb(158, 156, 156);
     background-image: image-url('card.png');
     background-size: cover;
+    background-position: center;
   }
 
   /* Style the back side */
@@ -84,5 +89,10 @@
   }
   .user-title {
     text-align: center;
+  }
+  @media screen and (max-width: 950px) {
+    .flip-card {
+      height: 200px;
+    }
   }
 }

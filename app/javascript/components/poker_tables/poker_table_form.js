@@ -70,12 +70,12 @@ const PokerTableForm = (props) => {
           </button>
           <select onChange={bidDropdownChange}>
             <option value="">Select...</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
+            <option value="1">1 - 1hr</option>
+            <option value="2">2 - 2hrs - 3hrs</option>
+            <option value="3">3 - 4hrs</option>
+            <option value="4">4 - 6hrs</option>
+            <option value="5">5 - 8hrs (whole day)</option>
+            <option value="6">6 - More than one day</option>
           </select>
         </div>
       </div>

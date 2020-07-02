@@ -1,16 +1,25 @@
-<% @users.each do |user| %>
-  <% if(user.bid) %>
-    <div class="col s3 flip-card <%= @show_cards == 'true' ? 'flipped' : ''%>">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
+<div class="row">
+  <% @users.each do |user| %>
+    <% if(user.bid) %>
+      <div class="col s3 flip-card <%= @show_cards == 'true' ? 'flipped' : ''%>">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+          </div>
+          <div class="flip-card-back">
+            <h1><%= user.bid %></h1>
+          </div>
         </div>
-        <div class="flip-card-back">
-          <h1><%= user.bid %></h1>
+        <div class="user-title">
+          <%= user.username %>
         </div>
       </div>
-      <div class="user-title">
-        <%= user.username %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
+</div>
+<% if(@show_cards == 'true') %>
+  <div class="row">
+    <div class="center">
+      <h4>Average: <%= @average %> </h4>
+    </div>
+  </div>
 <% end %>

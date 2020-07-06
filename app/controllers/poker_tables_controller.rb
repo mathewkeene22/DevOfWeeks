@@ -4,7 +4,7 @@ class PokerTablesController < ApplicationController
   def index
     @users = User.all
     @show_cards = params[:show_cards].presence || ''
-    @average = @show_cards.present? ? User.average('bid').ceil : ''
+    @average = @show_cards.present? ? User.average('bid').round : ''
     if params[:refresh_chart]
       render partial: 'poker_tables/results'
     end

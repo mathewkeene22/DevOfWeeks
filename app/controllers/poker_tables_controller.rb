@@ -18,6 +18,7 @@ class PokerTablesController < ApplicationController
   def clear_bids
     User.update_all(bid: nil)
     PokerTableChannel.broadcast_to User.first, User.all
+    render partial: 'poker_tables/results'
   end
 
   def flip_cards

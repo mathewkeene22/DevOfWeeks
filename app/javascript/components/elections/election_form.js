@@ -41,7 +41,9 @@ const ElectionForm = (props) => {
       },
       success: function (data) {
         setHasVoted(true)
-        $('.vote-message').val('')
+        $('.election-form select').val('')
+        $('.election-form .write-in-input').val('')
+        $('.election-form .vote-message').val('')
       },
       error: function (data) {
         console.log('something went wrong')

@@ -2,6 +2,6 @@
   "name": "Dev of Weeks",
   "description": "A collaborative remote team tool including scrum poker, a fun developer voting tool, and a random ice breaker question generator.",
   "repository": "https://github.com/mathewkeene22/DevOfWeeks",
-  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "logo": "http://dev-of-weeks.herokuapp.com/assets/favicon-6749d36225bec877fd651fa9636addd5a1b8205329a9c47de1f0cff982dcc05a.ico",
   "keywords": ["ruby on rails", "react", "websockets", "docker", "remote collaboration"]
 }

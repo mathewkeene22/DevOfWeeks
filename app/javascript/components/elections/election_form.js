@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Giphy from '../giphy/giphy'
 
 const ElectionForm = (props) => {
   const [nomineeId, setNomineeId] = React.useState('')
@@ -54,7 +55,6 @@ const ElectionForm = (props) => {
   return (
     <div className="election-form">
       <input type="hidden" className="election-id" value={ props.election_id } />
-
       <select onChange={ nomineeDropdownChange }>
         <option value="">Select...</option>
         { <NomineeDropdownOptions nominees={ props.nominees } /> }
@@ -63,6 +63,7 @@ const ElectionForm = (props) => {
 
       { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
 
+      { <Giphy /> }
       { <NomineeMessage onChange={ messageOnChange } message={ message } /> }
       <button
         type="submit"

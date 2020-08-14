@@ -6,7 +6,6 @@
     </div>
     <div id="election-form">
       <%= react_component('elections/election_form',
-          giphy_api_key: ENV['GIPHY_API_KEY'],
           election_id: @election.id,
           nominees: User.where.not(id: current_user.id),
           post_url: '/votes',

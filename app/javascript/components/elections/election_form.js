@@ -60,11 +60,13 @@ const ElectionForm = (props) => {
         { <NomineeDropdownOptions nominees={ props.nominees } /> }
         <option value="write_in">Write in your own answer!</option>
       </select>
-
       { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
 
       { <Giphy /> }
-      { <NomineeMessage onChange={ messageOnChange } message={ message } /> }
+      <div class='tab'><button class="tablinks">GIF</button></div>
+      <div>
+        { <NomineeMessage onChange={ messageOnChange } message={ message } /> }
+      </div>
       <button
         type="submit"
         className="btn right"

@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom'
 import React, { Component, PropTypes } from 'react'
 
 const Giphy = () => {
-
   const insertThing = (gif) => {
-    console.log(gif)
     let link = gif.original.url
     let wat = '<img style="height: 200px;" src="' + link + '"></img>'
     $('.election-form .vote-message').val(wat)
@@ -13,7 +11,7 @@ const Giphy = () => {
 
   return (
     <div>
-      <Picker apiKey='' onSelected={insertThing.bind(this)} />
+      <Picker apiKey={process.env.GIPHY_API_KEY} onSelected={insertThing.bind(this)} />
     </div>
   )
 }

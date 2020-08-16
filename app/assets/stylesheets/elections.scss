@@ -6,13 +6,37 @@ h5.vote-message-title {
   text-align: left;
 }
 
-.vote-message {
-  background-color: $darkest;
-  border: 1px solid $teal;
-  border-radius: 2px;
-  color: $teal;
-  padding: 5px;
+.election-form {
+  select {
+    display: block;
+  }
+  .tab {
+    overflow: hidden;
+    button {
+      background-color: inherit;
+      float: right;
+      outline: none;
+      border: 1px solid $teal;
+      border-bottom: none;
+      border-radius: 2px;
+      color: $teal;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+  }
+  .tab button:hover {
+    background-color: $teal;
+    color: $dark;
+  }
+  .vote-message {
+    background-color: $darkest;
+    border: 1px solid $teal;
+    border-radius: 2px;
+    color: $teal;
+    padding: 5px;
+  }
 }
+
 .chart-inner {
   position: relative;
 }
@@ -21,3 +45,5 @@ h5.vote-message-title {
   margin: auto;
   display: block;
 }
+
+

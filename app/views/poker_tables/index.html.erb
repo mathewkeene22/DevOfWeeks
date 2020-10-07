@@ -1,15 +1,15 @@
 <div class="poker-table">
   <div class="container">
     <h4 class="center">Scrum Poker</h4>
-    <div class="results-container">
-      <%= render partial: 'poker_tables/results' %>
-    </div>
     <div id="poker-table-form">
       <%=
         react_component('poker_tables/poker_table_form',
           user_id: current_user.id,
         )
       %>
+    </div>
+    <div class="results-container">
+      <%= render partial: 'poker_tables/results' %>
     </div>
   </div>
 </div>

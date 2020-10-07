@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'poker_tables/update_bid', to: 'poker_tables#update_bid'
   post 'poker_tables/flip_cards', to: 'poker_tables#flip_cards'
   resources :elections
+  post 'elections/show_all_votes/:id', to: 'elections#show_all_votes'
   resources :icebreakers, only: :index
   put 'update_all', to: 'icebreakers#update_all_questions'
 end

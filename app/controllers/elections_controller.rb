@@ -13,6 +13,11 @@ class ElectionsController < ApplicationController
     end
   end
 
+  def show_all_votes
+    @election.votes.update_all(is_seen: true)
+    redirect_to @election
+  end
+
   def new
     @election = Election.new
   end

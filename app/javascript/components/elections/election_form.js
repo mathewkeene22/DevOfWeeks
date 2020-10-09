@@ -6,15 +6,10 @@ const ElectionForm = (props) => {
   const [nomineeId, setNomineeId] = React.useState('')
   const [writeIn, setWriteIn] = React.useState('')
   const [showWriteInInput, setShowWriteInInput] = React.useState(false)
-  const [message, setMessage] = React.useState('')
   const [hasVoted, setHasVoted] = React.useState(props.has_voted)
 
   const writeInOnChange = (e) => {
     setWriteIn(e.target.value)
-  }
-
-  const messageOnChange = (e) => {
-    setMessage(e.target.value)
   }
 
   const nomineeDropdownChange = (e) => {
@@ -37,7 +32,7 @@ const ElectionForm = (props) => {
           election_id: props.election_id,
           nominee_id: nomineeId,
           write_in: writeIn,
-          message: message,
+          message: $('.election-form .vote-message').val()
         },
       },
       success: function (data) {
@@ -65,7 +60,7 @@ const ElectionForm = (props) => {
       { <Giphy /> }
       <div class='tab'><button class="tablinks">GIF</button></div>
       <div>
-        { <NomineeMessage onChange={ messageOnChange } message={ message } /> }
+        { <NomineeMessage/> }
       </div>
       <button
         type="submit"
@@ -107,8 +102,6 @@ const NomineeMessage = (props) => (
     className="vote-message"
     placeholder="Type something witty..."
     rows="4"
-    value={ props.message }
-    onChange={ props.onChange }
   />
 )
 

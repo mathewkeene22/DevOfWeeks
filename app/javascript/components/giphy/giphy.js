@@ -9,7 +9,7 @@ const Giphy = () => {
   }
 
   return (
-    <div>
+    <div className="giphy-picker-container">
       <Picker apiKey={process.env.GIPHY_API_KEY} onSelected={insertThing.bind(this)} />
     </div>
   )

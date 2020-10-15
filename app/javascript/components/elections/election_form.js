@@ -60,7 +60,7 @@ const ElectionForm = (props) => {
         <Giphy visible={giphyVisible} />
         : ''
       }
-      <div class='tab'><button className="tablinks" onClick={ ()=>setVisibility(!giphyVisible) }>GIF</button></div>
+      <div className='tab'><button className="tablinks" onClick={ ()=>setVisibility(!giphyVisible) }>GIF</button></div>
       <div>
         { <NomineeMessage/> }
       </div>

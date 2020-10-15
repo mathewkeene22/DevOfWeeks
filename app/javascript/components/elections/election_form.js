@@ -1,12 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { useState, useEffect } from 'react'
 import Giphy from '../giphy/giphy'
 
 const ElectionForm = (props) => {
-  const [nomineeId, setNomineeId] = React.useState('')
-  const [writeIn, setWriteIn] = React.useState('')
-  const [showWriteInInput, setShowWriteInInput] = React.useState(false)
-  const [hasVoted, setHasVoted] = React.useState(props.has_voted)
+  const [nomineeId, setNomineeId] = useState('')
+  const [writeIn, setWriteIn] = useState('')
+  const [showWriteInInput, setShowWriteInInput] = useState(false)
+  const [hasVoted, setHasVoted] = useState(props.has_voted)
+  const [giphyVisible, setVisibility] = useState(false)
 
   const writeInOnChange = (e) => {
     setWriteIn(e.target.value)
@@ -35,13 +35,13 @@ const ElectionForm = (props) => {
           message: $('.election-form .vote-message').val()
         },
       },
-      success: function (data) {
+      success: function () {
         setHasVoted(true)
         $('.election-form select').val('')
         $('.election-form .write-in-input').val('')
         $('.election-form .vote-message').val('')
       },
-      error: function (data) {
+      error: function () {
         console.log('something went wrong')
       },
     })
@@ -56,9 +56,11 @@ const ElectionForm = (props) => {
         <option value="write_in">Write in your own answer!</option>
       </select>
       { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
-
-      { <Giphy /> }
-      <div class='tab'><button class="tablinks">GIF</button></div>
+      { giphyVisible ?
+        <Giphy visible={giphyVisible} />
+        : ''
+      }
+      <div class='tab'><button className="tablinks" onClick={ ()=>setVisibility(!giphyVisible) }>GIF</button></div>
       <div>
         { <NomineeMessage/> }
       </div>
@@ -97,7 +99,7 @@ const WriteInInput = (props) => (
   </div>
 )
 
-const NomineeMessage = (props) => (
+const NomineeMessage = () => (
   <textarea
     className="vote-message"
     placeholder="Type something witty..."
@@ -106,4 +108,3 @@ const NomineeMessage = (props) => (
 )
 
 export default ElectionForm
-// ReactDOM.render(<ElectionForm />, $('.election-form'))

@@ -1,6 +1,5 @@
+import React, { useState } from 'react'
 import Picker from 'react-giphy-component'
-import ReactDOM from 'react-dom'
-import React, { Component, PropTypes } from 'react'
 
 const Giphy = () => {
   const insertThing = (gif) => {

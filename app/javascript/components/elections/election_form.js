@@ -1,12 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { useState } from 'react'
 
 const ElectionForm = (props) => {
-  const [nomineeId, setNomineeId] = React.useState('')
-  const [writeIn, setWriteIn] = React.useState('')
-  const [showWriteInInput, setShowWriteInInput] = React.useState(false)
-  const [message, setMessage] = React.useState('')
-  const [hasVoted, setHasVoted] = React.useState(props.has_voted)
+  const [nomineeId, setNomineeId] = useState('')
+  const [writeIn, setWriteIn] = useState('')
+  const [showWriteInInput, setShowWriteInInput] = useState(false)
+  const [message, setMessage] = useState('')
+  const [hasVoted, setHasVoted] = useState(props.has_voted)
 
   const writeInOnChange = (e) => {
     setWriteIn(e.target.value)
@@ -39,39 +38,46 @@ const ElectionForm = (props) => {
           message: message,
         },
       },
-      success: function (data) {
+      success: function () {
         setHasVoted(true)
         $('.election-form select').val('')
         $('.election-form .write-in-input').val('')
         $('.election-form .vote-message').val('')
       },
-      error: function (data) {
+      error: function () {
+        setHasVoted(false)
         console.log('something went wrong')
       },
     })
   }
 
+
   return (
-    <div className="election-form">
-      <input type="hidden" className="election-id" value={ props.election_id } />
+    <div>
+    { hasVoted
+      ? ''
+      : <div className="election-form">
+        <input type="hidden" className="election-id" value={ props.election_id } />
 
-      <select onChange={ nomineeDropdownChange }>
-        <option value="">Select...</option>
-        { <NomineeDropdownOptions nominees={ props.nominees } /> }
-        <option value="write_in">Write in your own answer!</option>
-      </select>
+        <select onChange={ nomineeDropdownChange }>
+          <option value="">Select...</option>
+          { <NomineeDropdownOptions nominees={ props.nominees } /> }
+          <option value="write_in">Write in your own answer!</option>
+        </select>
 
-      { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
+        { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
 
-      { <NomineeMessage onChange={ messageOnChange } message={ message } /> }
-      <button
-        type="submit"
-        className="btn right"
-        onClick={ handleSubmit }
-        disabled={ hasVoted }
-      >
-        Submit
-      </button>
+        { <NomineeMessage onChange={ messageOnChange } message={ message } /> }
+        <button
+          type="submit"
+          className="btn right"
+          onClick={ handleSubmit }
+          disabled={ hasVoted }
+        >
+          Submit
+        </button>
+      </div>
+    }
     </div>
   )
 }
@@ -110,4 +116,3 @@ const NomineeMessage = (props) => (
 )
 
 export default ElectionForm
-// ReactDOM.render(<ElectionForm />, $('.election-form'))

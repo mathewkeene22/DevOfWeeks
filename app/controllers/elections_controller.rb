@@ -24,11 +24,11 @@ class ElectionsController < ApplicationController
 
   def create
     @election = Election.new(permitted_parameters.merge!(created_by: current_user.id))
-
     if @election.save
       flash[:success] = "Election #{@election.name} was created successfully"
       redirect_to elections_path
     else
+      flash[:errors] = @election.errors.messages
       render :new
     end
   end

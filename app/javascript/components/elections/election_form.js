@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Giphy from '../giphy/giphy'
 
 const ElectionForm = (props) => {
   const [nomineeId, setNomineeId] = useState('')
   const [writeIn, setWriteIn] = useState('')
   const [showWriteInInput, setShowWriteInInput] = useState(false)
-  const [hasVoted, setHasVoted] = useState(props.has_voted)
   const [giphyVisible, setVisibility] = useState(false)
+  const [hasVoted, setHasVoted] = useState(props.has_voted)
 
   const writeInOnChange = (e) => {
     setWriteIn(e.target.value)
@@ -42,36 +42,43 @@ const ElectionForm = (props) => {
         $('.election-form .vote-message').val('')
       },
       error: function () {
+        setHasVoted(false)
         console.log('something went wrong')
       },
     })
   }
 
+
   return (
-    <div className="election-form">
-      <input type="hidden" className="election-id" value={ props.election_id } />
-      <select onChange={ nomineeDropdownChange }>
-        <option value="">Select...</option>
-        { <NomineeDropdownOptions nominees={ props.nominees } /> }
-        <option value="write_in">Write in your own answer!</option>
-      </select>
-      { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
-      { giphyVisible ?
-        <Giphy visible={giphyVisible} />
-        : ''
-      }
-      <div className='tab'><button className="tablinks" onClick={ ()=>setVisibility(!giphyVisible) }>GIF</button></div>
-      <div>
-        { <NomineeMessage/> }
+    <div>
+    { hasVoted
+      ? ''
+      : <div className="election-form">
+        <input type="hidden" className="election-id" value={ props.election_id } />
+
+        <select onChange={ nomineeDropdownChange }>
+          <option value="">Select...</option>
+          { <NomineeDropdownOptions nominees={ props.nominees } /> }
+          <option value="write_in">Write in your own answer!</option>
+        </select>
+
+        { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
+        { giphyVisible ?
+          <Giphy visible={giphyVisible} />
+          : ''
+        }
+        <div className='tab'><button className="tablinks" onClick={ ()=>setVisibility(!giphyVisible) }>GIF</button></div>
+        { <NomineeMessage onChange={ messageOnChange } message={ message } /> }
+        <button
+          type="submit"
+          className="btn right"
+          onClick={ handleSubmit }
+          disabled={ hasVoted }
+        >
+          Submit
+        </button>
       </div>
-      <button
-        type="submit"
-        className="btn right"
-        onClick={ handleSubmit }
-        disabled={ hasVoted }
-      >
-        Submit
-      </button>
+    }
     </div>
   )
 }

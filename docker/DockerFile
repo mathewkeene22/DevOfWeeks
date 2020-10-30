@@ -1,8 +1,11 @@
 FROM ruby:2.5.5-alpine3.10
 ENV BUILD_DEPS="curl tar wget linux-headers imagemagick fontconfig bash libstdc++ libx11 libxrender libxext libssl1.1 ca-certificates fontconfig freetype ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family" \
-    DEV_DEPS="build-base postgresql-dev zlib-dev libxml2-dev yarn libxslt-dev readline-dev tzdata git nodejs less"
-
+    DEV_DEPS="build-base postgresql-dev zlib-dev libxml2-dev yarn libxslt-dev readline-dev tzdata git nodejs nodejs-npm less"
 RUN apk add --update --upgrade $BUILD_DEPS $DEV_DEPS
+RUN npm install -g eslint babel-eslint \
+    eslint-config-airbnb eslint-plugin-jest eslint-plugin-flowtype \
+    eslint-plugin-babel eslint-plugin-import eslint-plugin-lodash-fp \
+    eslint-plugin-jsx-a11y eslint-plugin-react eslint-config-airbnb-base
 # Set an environment variable where the Rails app is installed to inside of Docker image
 ENV RAILS_ROOT /var/www/app
 RUN mkdir -p $RAILS_ROOT

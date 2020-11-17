@@ -54,30 +54,31 @@ const ElectionForm = (props) => {
     { hasVoted
       ? ''
       : <div className="election-form">
-        <input type="hidden" className="election-id" value={ props.election_id } />
+          <form onSubmit={ handleSubmit }>
+            <input type="hidden" className="election-id" value={ props.election_id } />
 
-        <select onChange={ nomineeDropdownChange }>
-          <option value="">Select...</option>
-          { <NomineeDropdownOptions nominees={ props.nominees } /> }
-          <option value="write_in">Write in your own answer!</option>
-        </select>
+            <select name="nominees" id="nominees" onChange={ nomineeDropdownChange } required={true}>
+              <option label="Select..." value=""></option>
+              { <NomineeDropdownOptions nominees={ props.nominees } /> }
+              <option value="write_in">Write in your own answer!</option>
+            </select>
 
-        { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
-        { giphyVisible ?
-          <Giphy visible={giphyVisible} />
-          : ''
-        }
-        <div className='tab'><button className="tablinks" onClick={ ()=>setVisibility(!giphyVisible) }>GIF</button></div>
-        { <NomineeMessage /> }
-        <button
-          type="submit"
-          className="btn right"
-          onClick={ handleSubmit }
-          disabled={ hasVoted }
-        >
-          Submit
-        </button>
-      </div>
+            { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
+            { giphyVisible ?
+              <Giphy visible={giphyVisible} />
+              : ''
+            }
+            <div className='tab'><button className="tablinks" onClick={ ()=>setVisibility(!giphyVisible) }>GIF</button></div>
+            { <NomineeMessage /> }
+            <button
+              type="submit"
+              className="btn right"
+              disabled={ hasVoted }
+            >
+              Submit
+            </button>
+          </form>
+        </div>
     }
     </div>
   )

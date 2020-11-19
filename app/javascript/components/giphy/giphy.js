@@ -2,15 +2,14 @@ import React, { useState } from 'react'
 import Picker from 'react-giphy-component'
 
 const Giphy = () => {
-  const insertThing = (gif) => {
-    let link = gif.original.url
-    let wat = '<img style="height: 200px;" src="' + link + '"></img>'
-    $('.election-form .vote-message').val(wat)
+  const insertGif = (gif) => {
+    let imageElement = `<img style="height: 200px;" src="${gif.original.url}"></img>`
+    $('.election-form .vote-message').val(imageElement)
   }
 
   return (
     <div className="giphy-picker-container">
-      <Picker apiKey={process.env.GIPHY_API_KEY} onSelected={insertThing.bind(this)} />
+      <Picker apiKey={process.env.GIPHY_API_KEY} onSelected={insertGif.bind(this)} />
     </div>
   )
 }

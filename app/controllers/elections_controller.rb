@@ -28,7 +28,7 @@ class ElectionsController < ApplicationController
       flash[:success] = "Election #{@election.name} was created successfully"
       redirect_to elections_path
     else
-      flash[:error] = @election.errors.messages
+      flash[:error] = @election.errors.full_messages.join()
       render :new
     end
   end
@@ -41,6 +41,7 @@ class ElectionsController < ApplicationController
       flash[:success] = "Election #{@election.name} was updated successfully"
       redirect_to elections_path
     else
+      flash[:error] = @election.errors.full_messages.join()
       render :new
     end
   end

@@ -40,14 +40,13 @@ const ElectionForm = (props) => {
         $('.election-form select').val('')
         $('.election-form .write-in-input').val('')
         $('.election-form .vote-message').val('')
-      },
+      }.bind(this),
       error: function () {
         setHasVoted(false)
         console.log('something went wrong')
       },
     })
   }
-
 
   return (
     <div>

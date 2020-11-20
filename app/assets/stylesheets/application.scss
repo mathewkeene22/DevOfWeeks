@@ -66,6 +66,10 @@ input  {
   color: $teal;
 }
 
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 select {
   display: block;
   border: 1px solid $teal;
@@ -91,8 +95,12 @@ select {
   text-align: center;
 }
 
-h4, h5 {
+h4, h5, h6 {
   color: $teal;
+}
+
+p, i, em {
+  color: $gray;
 }
 
 a {

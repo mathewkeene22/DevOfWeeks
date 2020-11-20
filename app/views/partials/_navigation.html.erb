@@ -1,5 +1,8 @@
 <div class="navbar-fixed">
   <ul id="dropdown1" class="dropdown-content">
+    <% if current_user %>
+      <li><%= link_to 'Profile', user_path(current_user) %></li>
+    <% end %>
     <li><%= link_to 'Create an Election', new_election_path %></li>
     <li><%= link_to 'Get an Icebreaker', icebreakers_path %></li>
     <li><%= link_to 'Scrum Poker', poker_tables_path %></li>

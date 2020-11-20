@@ -1,18 +1,15 @@
 import React, { useState } from 'react'
+import Giphy from '../giphy/giphy'
 
 const ElectionForm = (props) => {
   const [nomineeId, setNomineeId] = useState('')
   const [writeIn, setWriteIn] = useState('')
   const [showWriteInInput, setShowWriteInInput] = useState(false)
-  const [message, setMessage] = useState('')
+  const [giphyVisible, setVisibility] = useState(false)
   const [hasVoted, setHasVoted] = useState(props.has_voted)
 
   const writeInOnChange = (e) => {
     setWriteIn(e.target.value)
-  }
-
-  const messageOnChange = (e) => {
-    setMessage(e.target.value)
   }
 
   const nomineeDropdownChange = (e) => {
@@ -35,7 +32,7 @@ const ElectionForm = (props) => {
           election_id: props.election_id,
           nominee_id: nomineeId,
           write_in: writeIn,
-          message: message,
+          message: $('.election-form .vote-message').val()
         },
       },
       success: function () {
@@ -43,7 +40,7 @@ const ElectionForm = (props) => {
         $('.election-form select').val('')
         $('.election-form .write-in-input').val('')
         $('.election-form .vote-message').val('')
-      },
+      }.bind(this),
       error: function () {
         setHasVoted(false)
         console.log('something went wrong')
@@ -51,32 +48,36 @@ const ElectionForm = (props) => {
     })
   }
 
-
   return (
     <div>
     { hasVoted
       ? ''
       : <div className="election-form">
-        <input type="hidden" className="election-id" value={ props.election_id } />
+          <form onSubmit={ handleSubmit }>
+            <input type="hidden" className="election-id" value={ props.election_id } />
 
-        <select onChange={ nomineeDropdownChange }>
-          <option value="">Select...</option>
-          { <NomineeDropdownOptions nominees={ props.nominees } /> }
-          <option value="write_in">Write in your own answer!</option>
-        </select>
+            <select name="nominees" id="nominees" onChange={ nomineeDropdownChange } required={true}>
+              <option label="Select..." value=""></option>
+              { <NomineeDropdownOptions nominees={ props.nominees } /> }
+              <option value="write_in">Write in your own answer!</option>
+            </select>
 
-        { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
-
-        { <NomineeMessage onChange={ messageOnChange } message={ message } /> }
-        <button
-          type="submit"
-          className="btn right"
-          onClick={ handleSubmit }
-          disabled={ hasVoted }
-        >
-          Submit
-        </button>
-      </div>
+            { showWriteInInput ? <WriteInInput onChange={ writeInOnChange } writeIn={ props.writeIn } /> : null }
+            { giphyVisible ?
+              <Giphy visible={giphyVisible} />
+              : ''
+            }
+            <div className='tab'><div className="tablinks" onClick={ ()=>setVisibility(!giphyVisible) }>GIF</div></div>
+            { <NomineeMessage /> }
+            <button
+              type="submit"
+              className="btn right"
+              disabled={ hasVoted }
+            >
+              Submit
+            </button>
+          </form>
+        </div>
     }
     </div>
   )
@@ -105,13 +106,11 @@ const WriteInInput = (props) => (
   </div>
 )
 
-const NomineeMessage = (props) => (
+const NomineeMessage = () => (
   <textarea
     className="vote-message"
     placeholder="Type something witty..."
     rows="4"
-    value={ props.message }
-    onChange={ props.onChange }
   />
 )
 

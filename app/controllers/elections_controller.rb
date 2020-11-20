@@ -24,11 +24,11 @@ class ElectionsController < ApplicationController
 
   def create
     @election = Election.new(permitted_parameters.merge!(created_by: current_user.id))
-
     if @election.save
-      flash[:success] = "Election #{@election.name} was created successfully"
+      flash[:success] = "'#{@election.name}' election was created successfully"
       redirect_to elections_path
     else
+      flash[:error] = @election.errors.full_messages.join(' ')
       render :new
     end
   end
@@ -38,9 +38,10 @@ class ElectionsController < ApplicationController
 
   def update
     if @election.update_attributes(permitted_parameters)
-      flash[:success] = "Election #{@election.name} was updated successfully"
+      flash[:success] = "'#{@election.name}' election was updated successfully"
       redirect_to elections_path
     else
+      flash[:error] = @election.errors.full_messages.join(' ')
       render :new
     end
   end

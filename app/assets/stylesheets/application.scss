@@ -74,16 +74,6 @@ select {
   height: 2.5rem;
 }
 
-.election-form {
-  select {
-    display: block;
-  }
-  .vote-message {
-    margin: 20px auto;
-    color: $teal;
-  }
-}
-
 .btn, input[type="submit"] {
   background-color: transparent;
   border: 2px solid $teal;
@@ -101,12 +91,8 @@ select {
   text-align: center;
 }
 
-h4 {
+h4, h5 {
   color: $teal;
-}
-
-h5 {
-  color: $teal
 }
 
 a {

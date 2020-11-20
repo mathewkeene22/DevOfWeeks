@@ -1,19 +1,17 @@
 <div class="election" data-channel-subscribe="election" data-election-id="<%= @election.id %>">
-    <div class="container">
-        <h4 class="chart-header"><%= @election.name %></h4>
-        <div class="chart-container">
-            <%= render partial: 'elections/chart' %>
-        </div>
-        <div id="election-form">
-            <%=
-        react_component('elections/election_form',
+  <div class="container">
+    <h4 class="chart-header"><%= @election.name %></h4>
+    <div class="chart-container">
+      <%= render partial: 'elections/chart' %>
+    </div>
+    <div id="election-form">
+      <%= react_component('elections/election_form',
           election_id: @election.id,
           nominees: User.where.not(id: current_user.id),
           post_url: '/votes',
           has_voted: current_user.voted?(@election)
         )
       %>
-        </div>
     </div>
-
+  </div>
 </div>

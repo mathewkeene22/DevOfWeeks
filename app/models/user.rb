@@ -12,7 +12,7 @@ class User < ApplicationRecord
     if birthday.present?
       today = Date.today
       days_from_this_week = (today.at_beginning_of_week..today.at_end_of_week)
-      days_from_this_week.include?(birthday) ? '🧁' : nil
+      days_from_this_week.include?(birthday.change(year: today.year)) ? '🧁' : nil
     end
   end
 end

@@ -4,6 +4,6 @@
 <h6>Email:</h6>
 <p><%= @user.email %></p>
 <h6>Birthday:</h6>
-<p><%= @user&.birthday.strftime("%b %d") %></p>
+<p><%= @user&.birthday&.strftime("%b %d") %></p>
 <br>
 <%= link_to "Edit", edit_user_registration_path(), class: "btn waves-effect waves-light" %>

@@ -1,4 +1,5 @@
 import consumer from "./consumer";
+import ConfettiGenerator from "confetti-js";
 require("jquery");
 
 $(document).on("turbolinks:load", function () {
@@ -16,7 +17,12 @@ $(document).on("turbolinks:load", function () {
           type: "get",
           data: "",
           success: function (data) {
-            $(".results-container").html(data);
+            $(".results-container").html(data.html);
+            if(data.is_unanimous){
+              const confettiSettings = { target: 'my-canvas' };
+              const confetti = new ConfettiGenerator(confettiSettings);
+              confetti.render();
+            }
           },
           error: function (data) {
             console.log("something went wrong");

@@ -6,7 +6,13 @@ class PokerTablesController < ApplicationController
     @show_cards = params[:show_cards].presence || ''
     @average = @show_cards.present? ? User.average('bid')&.round : ''
     if params[:refresh_chart]
-      render partial: 'poker_tables/results'
+      is_unanimous = User.all.map(&:bid).compact.uniq.size == 1
+      html = view_context.render partial: 'poker_tables/results'
+      data = {
+        html: html,
+        is_unanimous: is_unanimous
+      }
+      render json: data.to_json
     end
   end
 

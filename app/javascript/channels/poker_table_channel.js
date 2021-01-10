@@ -16,12 +16,19 @@ $(document).on("turbolinks:load", function () {
           url: url,
           type: "get",
           data: "",
+          async: false,
           success: function (data) {
+            // debugger
             $(".results-container").html(data.html);
-            if(data.is_unanimous){
-              const confettiSettings = { target: 'my-canvas' };
+            if(data.is_unanimous && this.url.includes('show_cards=true')){
+              const confettiSettings = { target: 'confetti' };
               const confetti = new ConfettiGenerator(confettiSettings);
               confetti.render();
+            } else {
+              const canvas = document.getElementById("confetti");
+              const ctx = canvas.getContext("2d")
+              ctx.canvas.height = 0;
+              ctx.canvas.width = 0;
             }
           },
           error: function (data) {

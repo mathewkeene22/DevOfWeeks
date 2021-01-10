@@ -18,7 +18,6 @@ $(document).on("turbolinks:load", function () {
           data: "",
           async: false,
           success: function (data) {
-            // debugger
             $(".results-container").html(data.html);
             if(data.is_unanimous && this.url.includes('show_cards=true')){
               const confettiSettings = {

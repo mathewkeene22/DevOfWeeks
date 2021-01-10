@@ -21,7 +21,29 @@ $(document).on("turbolinks:load", function () {
             // debugger
             $(".results-container").html(data.html);
             if(data.is_unanimous && this.url.includes('show_cards=true')){
-              const confettiSettings = { target: 'confetti' };
+              const confettiSettings = {
+                "target": "confetti",
+                "max": "300",
+                "size": "1.5",
+                "animate": true,
+                "clock": "25",
+                "rotate": true,
+                "width": "1271",
+                "height": "634",
+                "respawn": true,
+                "props": [
+                  "circle",
+                  "square",
+                  "triangle",
+                  "line"
+                ],
+                "colors": [
+                  [165,104,246],
+                  [230,61,135],
+                  [0,199,228],
+                  [253,214,126]
+                ]
+              }
               const confetti = new ConfettiGenerator(confettiSettings);
               confetti.render();
             } else {

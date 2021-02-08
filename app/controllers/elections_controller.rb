@@ -2,7 +2,7 @@ class ElectionsController < ApplicationController
   before_action :object_setter
 
   def index
-    @elections = Election.all
+    @elections = Election.all.limit(10).order(:created_at)
   end
 
   def show

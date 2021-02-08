@@ -13,7 +13,7 @@
 
   <% @election.votes.visable.each do |vote| %>
     <div class="display-vote">
-      <h5 class="vote-message-title">Vote for: <%= vote.nominee_name %> <%= vote.nominee&.is_birthday_week? %></h5>
+      <h5 class="vote-message-title">Vote for: <%= vote.nominee_name %> <%= vote.nominee&.is_special_week?(@election.created_at)&.html_safe %> </h5>
       <p class="vote-message"><%= vote.message.html_safe %></p>
     </div>
     <hr>

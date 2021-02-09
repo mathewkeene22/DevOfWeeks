@@ -7,7 +7,7 @@ namespace :db_setup do
     nate = User.find_by(id: 6)
     nate.update(work_anniversary: '2011-05-09')
     dan = User.find_by(id: 4)
-    dan.update(work_anniversary: '2013-02-11')
+    dan.update(work_anniversary: '2013-02-11', birthday: '2000-02-22')
     mat = User.find_by(id: 1)
     mat.update(work_anniversary: '2016-09-12', birthday: '2000-10-17')
     nicole = User.find_by(id: 5)

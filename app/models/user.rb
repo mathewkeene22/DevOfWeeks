@@ -8,11 +8,14 @@ class User < ApplicationRecord
     election.votes.map(&:created_by).include? id
   end
 
-  def is_birthday_week?
+  def is_special_week?(election_date)
+    special_icon = ""
+    days_from_this_week = (election_date.at_beginning_of_week..election_date.at_end_of_week)
     if birthday.present?
-      today = Date.today
-      days_from_this_week = (today.at_beginning_of_week..today.at_end_of_week)
-      days_from_this_week.include?(birthday.change(year: today.year)) ? '🧁' : nil
+      special_icon += days_from_this_week.include?(birthday.change(year: election_date.year)) ? "<span class='hoverable' title=#{birthday&.strftime('%e-%b')}>🧁</span>" : ""
+    end
+    if work_anniversary.present?
+      special_icon += days_from_this_week.include?(work_anniversary.change(year: election_date.year)) ? "<span class='hoverable' title=#{work_anniversary&.strftime(' %v')}>🎉</span>" : ""
     end
   end
 end

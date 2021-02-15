@@ -3,24 +3,24 @@
     <div class="alert alert-primary">
       <% if @elections.present? %>
         <h4>Most Recent Election</h4>
-        <%= link_to @elections.last.name, election_path(@elections.last), class: "nav-link election-nav-link" %>
-        
+        <%= link_to @elections.first.name, election_path(@elections.first), class: "nav-link election-nav-link" %>
+
         <% if @elections.size > 1 %>
           <h4>Past Elections</h4>
         <% end %>
-        
+
         <ul>
           <% @elections[0..-2].each do |election| %>
             <li>
               <%= link_to election.name, election_path(election), class: "nav-link election-nav-link" %>
-            </li>  
+            </li>
           <% end %>
         <ul>
 
       <% else %>
         <h4>There are no elections</h4>
       <% end %>
-      
+
     </div>
   </div>
 </div>

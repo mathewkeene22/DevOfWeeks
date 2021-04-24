@@ -114,7 +114,9 @@ GEM
     materialize-sass (1.0.0)
       autoprefixer-rails (>= 6.0.3)
     method_source (1.0.0)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.0)
@@ -128,7 +130,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (3.12.4)
+    puma (3.12.6)
     racc (1.5.2)
     rack (2.2.2)
     rack-proxy (0.6.5)
@@ -241,7 +243,7 @@ DEPENDENCIES
   materialize-sass (~> 1.0.0)
   pg (>= 0.18, < 2.0)
   pry
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 6.0.0)
   rb-readline
   react-rails

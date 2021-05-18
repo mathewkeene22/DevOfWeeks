@@ -154,7 +154,9 @@ questions = [
   "Would you rather be the funniest or smartest person in the room?",
   "Would you rather be able to run at 100 miles per hour or fly at 10 miles per hour?",
   "Would you rather be a superhero or the world’s best chef?",
-  "Would you rather be an Olympic gold medallist or an astronaut?"
+  "Would you rather be an Olympic gold medallist or an astronaut?",
+  "If you had to be an HTML element, what would you be and why?",
+  "What is your favorite Dan-ism?"
 ]
 questions.each do |q|
   Icebreaker.create!(question: q)

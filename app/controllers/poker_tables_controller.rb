@@ -6,14 +6,24 @@ class PokerTablesController < ApplicationController
     @show_cards = params[:show_cards].presence || ''
     @average = @show_cards.present? ? User.average('bid')&.round : ''
     if params[:refresh_chart]
-      is_unanimous = User.all.map(&:bid).compact.uniq.size == 1
       html = view_context.render partial: 'poker_tables/results'
       data = {
         html: html,
-        is_unanimous: is_unanimous
+        special_animation: special_animation
       }
       render json: data.to_json
     end
+  end
+
+  def special_animation
+    compact = User.all.map(&:bid).compact
+    compact_unique = compact.uniq
+    # ruby 2.7 has Array.tally which will be nice.
+    tally = compact.group_by(&:itself).transform_values(&:count)
+
+    return 'allDifferent' if compact_unique.size == compact.size
+    return 'allButOne' if compact.size > 2 || compact_unique.size == 2 && tally[compact.first] == 1 || tally[compact.second] == 1
+    return 'isUnanimous' if compact_unique.size == 1
   end
 
   def update_bid

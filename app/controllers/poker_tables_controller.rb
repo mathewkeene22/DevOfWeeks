@@ -9,7 +9,7 @@ class PokerTablesController < ApplicationController
       html = view_context.render partial: 'poker_tables/results'
       data = {
         html: html,
-        special_animation: 'allButOne'
+        special_animation: special_animation
       }
       render json: data.to_json
     end

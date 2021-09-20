@@ -22,7 +22,7 @@ class PokerTablesController < ApplicationController
     tally = compact.group_by(&:itself).transform_values(&:count)
 
     return 'allDifferent' if compact_unique.size == compact.size
-    return 'allButOne' if compact.size > 2 || compact_unique.size == 2 && tally[compact.first] == 1 || tally[compact.second] == 1
+    return 'allButOne' if (compact.size > 2 && compact_unique.size == 2) && (tally[compact.first] == 1 || tally[compact.second] == 1)
     return 'isUnanimous' if compact_unique.size == 1
   end
 
